@@ -20,14 +20,14 @@ public class SkillController {
         @Autowired
         private SkillRepository skillRepository;
 
-//        @RequestMapping("")
-//        public String index(Model model){
-//            model.addAttribute("skills", skillRepository.findAll());
-//            return "index";
-//        }
+        @RequestMapping("")
+        public String index(Model model){
+            model.addAttribute("skills", skillRepository.findAll());
+            return "index";
+        }
 
-        @GetMapping
-        public String listAllSkills(Model model) {
+        @GetMapping("")
+        public String displayViewAllSkills(Model model) {
             model.addAttribute("title", "All Skills");
             model.addAttribute("skills", skillRepository.findAll());
             return "skills/index";
@@ -50,6 +50,7 @@ public class SkillController {
 
             skillRepository.save(newSkill);
             return "redirect:";
+
         }
 
         @GetMapping("view/{skillId}")
