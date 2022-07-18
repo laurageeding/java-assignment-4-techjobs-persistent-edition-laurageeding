@@ -57,14 +57,14 @@ public class HomeController {
             return "add";
         }
 
-        //???
+
         Optional<Employer> employer = employerRepository.findById(employerId);
         if(employer.isPresent()){
             Employer newEmployer = employer.get();
             newJob.setEmployer(newEmployer);
         }
 
-        //???
+
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
         jobRepository.save(newJob);
@@ -75,7 +75,6 @@ public class HomeController {
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
 
-        //??
         Optional<Job> job = jobRepository.findById(jobId);
         if(job.isPresent()) {
             Job viewJob = (Job) job.get();
